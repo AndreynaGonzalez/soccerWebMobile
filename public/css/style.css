@@ -1,0 +1,169 @@
+.nav-link {
+    display: block;
+    /* padding: 7px; */
+    text-align: right;
+}
+
+
+.h1Home {
+    margin-top: 3px;
+
+    font-size: 30px;
+}
+
+
+
+.table td,
+.table th {
+    padding: 2px;
+    vertical-align: inherit;
+    /* border-top: 1px solid #dee2e6; */
+}
+
+iframe {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.totalBody {
+    background-image: url("../img/Fondo-pasto.jpg");
+}
+
+.w-100 {
+    width: 100%;
+    height: max-content;
+}
+
+.cardImg {
+    width: 20px;
+}
+
+
+.card-img,
+.card-img-bottom,
+.card-img-top {
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+}
+
+.justify-content-around {
+    -ms-flex-pack: distribute !important;
+    justify-content: space-around !important;
+}
+
+.ulNav {
+    background-color: antiquewhite;
+}
+
+.mb-3,
+.my-3 {
+    margin-bottom: 0px !important;
+    background: #343a40;
+}
+
+
+
+@media only screen and (min-width: 601px) and (orientation: landscape) {
+    .h1Home {
+        font-size: 80px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (orientation: landscape) {
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        color: #fff;
+        background-color: #00488e;
+    }
+
+    .card-header {
+        padding: .75rem 1.25rem;
+        margin-bottom: 0;
+        background-color: #00488e;
+        /* border-bottom: 1px solid rgba(0,0,0,.125); */
+        color: white;
+    }
+
+    .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem;
+        background-color: #343a40;
+    }
+
+    .carousel-caption {
+        position: absolute;
+        right: 15%;
+        bottom: 80px;
+        left: 15%;
+        z-index: 10;
+        padding-top: 40px;
+        padding-bottom: 70px;
+        color: #fff;
+        text-align: center;
+    }
+
+
+    .btn-link {
+        font-weight: 400;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #000000;
+        font-weight: 700;
+    }
+
+    .table td,
+    .table th {
+        vertical-align: inherit;
+        border-top: 1px solid #2e2e2e;
+    }
+
+    table th {
+        background-color: #00488e;
+    }
+
+    a {
+        color: #00488e;
+    }
+
+    a nav {
+        color: #feffff;
+    }
+
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.flip-card {
+    transform-style: preserve-3d;
+}
+
+.flip-card-container :hover .flip-card {
+    transform: rotateY(540deg);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front {
+    transform: rotateY(180deg);
+
+}
+
+.btn-outline-danger {
+    color: #ffff;
+    background-color: #dc3545;
+}

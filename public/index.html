@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="img/icono/ios/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/icono/ios/AppIcon.appiconset/Icon-App-76x76@1x.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/icono/ios/AppIcon.appiconset/ItunesArtwork@2x.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icono/ios/AppIcon.appiconset/ItunesArtwork@2x.png">
+  <link href="img/icono/android/mipmap-hdpi/ic_launcher.png" rel="icon" sizes="192x192">
+  <link href="img/icono/android/mipmap-xhdpi/ic_launcher.png" rel="icon" sizes="128x128">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.min.css" />
+
+  <title>Document</title>
+</head>
+
+
+<!----------------------------------------------------- NAV APP -------------------------------------------------------------------->
+
+<body class="totalBody">
+  <div class="tabs">
+    <ul class="nav nav-pills mb-3" id="pills" role="tablist" class="bg-dark">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="pills-h" data-toggle="pill" href="#pills-home">Home</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-s" data-toggle="pill" href="#pills-schedule">Schedule</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-m" data-toggle="pill" href="#pills-maps">Maps</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-t" data-toggle="pill" href="#pills-teams">Teams</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-l" data-toggle="pill" href="#pills-login">Login</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <!------------------------------------------------------------------------------------------------------------------------------->
+
+  <!----------------------------------------------------- HOME -------------------------------------------------------------------->
+  <div id="app">
+    <div id="pills-home">
+      <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="img-fluid" src="img/1.png" alt="..." class="w-100 h-100">
+          </div>
+
+          <div class="carousel-item">
+            <img class="img-fluid" src="img/2.png" alt="..." class="w-100 h-100">
+
+          </div>
+
+          <div class="carousel-item">
+            <img class="img-fluid" src="img/3.png" alt="..." class="w-100 h-100">
+
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----------------------------------------------------------------------------------------------------------------------------------->
+
+
+    <!----------------------------------------------------- SCHEDULE -------------------------------------------------------------------->
+
+    <div id="pills-schedule" v-on:click="display('pills-schedule')">
+      <transition name="slide-fade">
+
+        <div class="table-responsive">>
+          <table class="table">
+            <thead class="bg-primary">
+              <tr>
+                <th class="text-center">Team 1</th>
+                <th class="text-center">Date</th>
+                <th class="text-center">Chat</th>
+                <th class="text-center">Location</th>
+                <th class="text-center">Team 2</th>
+
+              </tr>
+            </thead>
+            <tbody class="bg-light" id="app">
+              <tr v-for="game in games">
+                <td class="text-center"> <img v-bind:src="game.src1" alt="">
+                </td>
+                <td class="text-center">{{game.Date}}</td>
+                <td class="text-center">
+                  <button class="btn btn-success btn-sm" v-on:click="foro(game.Num)">
+                    {{game.Id}} Chat </button>
+                </td>
+                <td class="text-center"> <a v-bind:href="game.Map" target="_blank">{{game.Location}}</a></td>
+                <td class="text-center"> <img v-bind:src="game.src2" alt=""></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </transition>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+    <!----------------------------------------------------- MAPS -------------------------------------------------------------------->
+
+    <div id="pills-maps">
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0" class="text-center">
+              <button class="btn btn-link btn-block" type="button" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                AJ Katzenmaier
+              </button>
+            </h2>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body" id="map-container-google-8" class="z-depth-1-half map-container-5">
+              <iframe class="imgMaps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.2896536435765!2d-87.6481613851835!3d41.92962687016822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd30f2637f9d7%3A0xdbff5d5dfcfcfa35!2sMarjorie%20P%20Hart%20Elementary!5e0!3m2!1ses!2ses!4v1596716212588!5m2!1ses!2ses"
+                name="mapi">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0" class="text-center">
+              <button class="btn btn-link btn-block collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Greenbay
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body" id="map-container-google-8" class="z-depth-1-half map-container-5">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0227959922263!2d-87.64002218518395!3d41.913868671155114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3407260c45b%3A0xb351205fae50c6f3!2sGreenbay%20Elementary!5e0!3m2!1ses!2ses!4v1596668510223!5m2!1ses!2ses"
+                name="mapi">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0" class="text-center">
+              <button class="btn btn-link btn-block  collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                Howard A Yeager
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body" id="map-container-google-8" class="z-depth-1-half map-container-5">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.0227959922263!2d-87.64002218518395!3d41.913868671155114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd3407260c45b%3A0xb351205fae50c6f3!2sGreenbay%20Elementary!5e0!3m2!1ses!2ses!4v1596668510223!5m2!1ses!2ses"
+                name="mapi">
+              </iframe>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0" class="text-center">
+              <button class="btn btn-link btn-block  collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                P Hart
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body" id="map-container-google-8" class="z-depth-1-half map-container-5">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.2896536435765!2d-87.6481613851835!3d41.92962687016822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd30f2637f9d7%3A0xdbff5d5dfcfcfa35!2sMarjorie%20P%20Hart%20Elementary!5e0!3m2!1ses!2ses!4v1596716212588!5m2!1ses!2ses"
+                name="mapi">
+              </iframe>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFive">
+              <h2 class="mb-0" class="text-center">
+                <button class="btn btn-link btn-block  collapsed" type="button" data-toggle="collapse"
+                  data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFive">
+                  North
+                </button>
+              </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+              <div class="card-body" id="map-container-google-8" class="z-depth-1-half map-container-5">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2968.2896536435765!2d-87.6481613851835!3d41.92962687016822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd30f2637f9d7%3A0xdbff5d5dfcfcfa35!2sMarjorie%20P%20Hart%20Elementary!5e0!3m2!1ses!2ses!4v1596716212588!5m2!1ses!2ses"
+                  name="mapi">
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+    <!----------------------------------------------------- TEAMS -------------------------------------------------------------------->
+
+    <div id="pills-teams">
+
+      <div id="carouselExampleCaptions2" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleCaptions2" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleCaptions2" data-slide-to="1"></li>
+          <li data-target="#carouselExampleCaptions2" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="col-lg-6 mb-4">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img src="img/U1.png" alt="Image">
+                          <h3>Football League</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-4" class="d-inline-block">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img src="img/U2.png" alt="Image">
+                          <h3>Football League</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="col-lg-6 mb-4">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img src="img/U3.png" alt="Image">
+                          <h3>Football League</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-4" class="d-inline-block">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img src="img/U4.png" alt="Image">
+                          <h3>Football League</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="col-lg-6 mb-4">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img src="img/U5.png" alt="Image">
+                          <h3>Football League</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-4" class="d-inline-block">
+                <div class="bg-light p-4 rounded">
+                  <div class="widget-body">
+                    <div class="widget-vs">
+                      <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
+                        <div class="team-1 text-center">
+                          <img src="img/U6.png" alt="Image">
+                          <h3>Football League</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions2" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions2" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <div id="pills-login">
+      <div v-show="user == null">
+        <aside id="login" class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <form name="login_form" id="login_form" action="">
+                <div class="form-group">
+                  <label>Usuario</label><input type="text" v-model:value="email" name="" class="form-control"
+                    placeholder="Email or login" s id="email" />
+                </div>
+                <div class="form-group">
+                  <label>Password</label><input input type="password" v-model:value="password" class="form-control"
+                    placeholder="Password" id="password">
+                </div>
+              </form>
+              <div class="row">
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <button v-on:click="accesoGoogle" href="" class="btn btn-block btn-outline-danger">
+                      <i class="fab fa-google"></i>
+                      Acceso con Google</button>
+
+                    <button v-on:click="acceso" type="submit" class="btn btn-primary btn-block" id="access"
+                      name="access">Acceso</button>
+
+                    <button v-on:click="registro" href="" class="btn btn-block btn-outline-primary">Registro</button>
+                  </div>
+                  <div class="col-md-6 pt-2 pr-4 text-right">
+                    <a class="small" href="#" class="">¿Olvidó su contraseña?</a>
+                  </div>
+                </div>
+              </div>
+        </aside>
+      </div>
+      <div class="container">
+        <div id="foro">
+          <div class="row second-block justify-content-center">
+            <div class="col-10" id="chaat">
+              <h3 class="tittleChat">Welcome to {{numberGame}}</h3>
+              <ul>
+                <li v-for="mensaje in mensajes">
+                  <div class="mensajesChat">
+                    User: {{mensaje.email}}
+                    say: {{mensaje.texto}}
+                  </div>
+                </li>
+              </ul>
+              <div class="msj">
+                <label>Msj:</label>
+                <input type="text" v-model:value="mensaje">
+                <button class="buttonSend" type="button" class="btn btn-sm btn-success" v-on:click="send">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+
+  <!--CORE FIRBASE-->
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+  <script defer src="js/login.js"></script>
+  <script defer src="js/main.js"></script>
+
+
+
+</body>
+
+</html>
